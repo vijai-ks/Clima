@@ -12,7 +12,7 @@ class LocationScreen extends StatefulWidget {
 }
 
 class _LocationScreenState extends State<LocationScreen> {
-  late int temperature;
+  late var temperature;
   late String cityName;
   late int condition;
   late String weatherIcon;
@@ -28,6 +28,14 @@ class _LocationScreenState extends State<LocationScreen> {
   }
 
   void updateUI(dynamic weatherData) {
+    if (weatherData == null) {
+      cityName = 'here';
+      weatherIcon = '';
+      temperature = '~∞';
+      weatherMessage = 'You are going to freeze';
+      return;
+    }
+
     cityName = weatherData['name'];
     condition = weatherData['weather'][0]['id'];
     weatherIcon = weatherModal.getWeatherIcon(condition);

@@ -76,3 +76,7 @@ class _LocationScreenState extends State<LocationScreen> {
     );
   }
 }
+
+// var cityName = decodedData['name'];
+// var condition = decodedData['weather'][0]['id'];
+// var currentTemperature = decodedData['main']['temp'];

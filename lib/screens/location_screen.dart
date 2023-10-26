@@ -11,11 +11,21 @@ class LocationScreen extends StatefulWidget {
 }
 
 class _LocationScreenState extends State<LocationScreen> {
+  late int temperature;
+  late String cityName;
+  late int condition;
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    print(widget.locationWeather);
+    updateUI(widget.locationWeather);
+  }
+
+  void updateUI(dynamic weatherData) {
+    cityName = weatherData['name'];
+    condition = weatherData['weather'][0]['id'];
+    temperature = weatherData['main']['temp'].toInt();
   }
 
   @override
@@ -55,15 +65,15 @@ class _LocationScreenState extends State<LocationScreen> {
                   ),
                 ],
               ),
-              const Padding(
-                padding: EdgeInsets.only(left: 15.0),
+              Padding(
+                padding: const EdgeInsets.only(left: 15.0),
                 child: Row(
                   children: <Widget>[
                     Text(
-                      '32°',
+                      '$temperature°',
                       style: kTempTextStyle,
                     ),
-                    Text(
+                    const Text(
                       '☀️',
                       style: kConditionTextStyle,
                     ),
@@ -85,7 +95,3 @@ class _LocationScreenState extends State<LocationScreen> {
     );
   }
 }
-
-// var cityName = decodedData['name'];
-// var condition = decodedData['weather'][0]['id'];
-// var currentTemperature = decodedData['main']['temp'];

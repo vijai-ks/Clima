@@ -1,4 +1,25 @@
+import 'location.dart';
+import 'networking.dart';
+
+// This ID is an unique ID generated from the API Site
+const apiKey = 'a584746887fbcfd49d1b26227650d686';
+
+// Weather API Fetching link
+const weatherAPILink = 'https://api.openweathermap.org/data/2.5/weather';
+
 class WeatherModel {
+  Future getLocationScreen() async {
+    Location location = Location();
+    await location.getCurrentLocation();
+
+    NetworkHelper networkHelper = NetworkHelper(
+        '$weatherAPILink?lat=${location.latitude}&lon=${location.longitude}&appid=$apiKey&units=metric');
+
+    var weatherData = await networkHelper.getWeatherData();
+
+    return weatherData;
+  }
+
   String getWeatherIcon(int condition) {
     if (condition < 300) {
       return '🌩';

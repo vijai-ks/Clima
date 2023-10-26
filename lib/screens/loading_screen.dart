@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:clima/services/location.dart';
 import 'package:clima/services/networking.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 // This ID is an unique ID generated from the API Site
 const apiKey = 'a584746887fbcfd49d1b26227650d686';
@@ -36,13 +37,11 @@ class _LoadingScreenState extends State<LoadingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(
-        child: TextButton(
-          onPressed: () {
-            //Get the current location
-          },
-          child: const Text('Get Location'),
+        child: SpinKitChasingDots(
+          color: Colors.white,
+          size: 150.0,
         ),
       ),
     );

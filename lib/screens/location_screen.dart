@@ -30,20 +30,22 @@ class _LocationScreenState extends State<LocationScreen> {
   }
 
   void updateUI(dynamic weatherData) {
-    if (weatherData == null) {
-      cityName = 'here';
-      weatherIcon = '';
-      temperature = '~∞';
-      weatherMessage = 'You are going to freeze';
-      return;
-    }
+    setState(() {
+      if (weatherData == null) {
+        cityName = 'here';
+        weatherIcon = '';
+        temperature = '~∞';
+        weatherMessage = 'You are going to freeze';
+        return;
+      }
 
-    cityName = weatherData['name'];
-    condition = weatherData['weather'][0]['id'];
-    weatherIcon = weatherModal.getWeatherIcon(condition);
+      cityName = weatherData['name'];
+      condition = weatherData['weather'][0]['id'];
+      weatherIcon = weatherModal.getWeatherIcon(condition);
 
-    temperature = weatherData['main']['temp'].toInt();
-    weatherMessage = weatherModal.getMessage(temperature);
+      temperature = weatherData['main']['temp'].toInt();
+      weatherMessage = weatherModal.getMessage(temperature);
+    });
   }
 
   @override
@@ -69,7 +71,16 @@ class _LocationScreenState extends State<LocationScreen> {
                 children: <Widget>[
                   TextButton(
                     onPressed: () async {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return const LoadingScreen();
+                          },
+                        ),
+                      );
                       var weatherData = await weatherModal.getLocationScreen();
+                      Navigator.pop(context);
                       updateUI(weatherData);
                     },
                     child: const Icon(
@@ -88,8 +99,17 @@ class _LocationScreenState extends State<LocationScreen> {
                         ),
                       );
                       if (namedCity != null) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return const LoadingScreen();
+                            },
+                          ),
+                        );
                         var weatherData = await weatherModal
                             .getLocationForNamedCity(namedCity);
+                        Navigator.pop(context);
                         updateUI(weatherData);
                       }
                     },

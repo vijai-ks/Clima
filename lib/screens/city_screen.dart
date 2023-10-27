@@ -35,7 +35,16 @@ class _CityScreenState extends State<CityScreen> {
               ),
               Container(
                 padding: const EdgeInsets.all(20.0),
-                child: null,
+                child: TextField(
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 25.0,
+                  ),
+                  decoration: kInputBoxDecorationStyle,
+                  onChanged: (value) {
+                    print(value);
+                  },
+                ),
               ),
               TextButton(
                 onPressed: () {},

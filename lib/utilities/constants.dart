@@ -39,3 +39,9 @@ const kInputBoxDecorationStyle = InputDecoration(
     fontSize: 20.0,
   ),
 );
+
+// This ID is an unique ID generated from the API Site
+const apiKey = 'a584746887fbcfd49d1b26227650d686';
+
+// Weather API Fetching link
+const weatherAPILink = 'https://api.openweathermap.org/data/2.5/weather';

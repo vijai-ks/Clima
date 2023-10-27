@@ -1,11 +1,6 @@
 import 'location.dart';
 import 'networking.dart';
-
-// This ID is an unique ID generated from the API Site
-const apiKey = 'a584746887fbcfd49d1b26227650d686';
-
-// Weather API Fetching link
-const weatherAPILink = 'https://api.openweathermap.org/data/2.5/weather';
+import 'package:clima/utilities/constants.dart';
 
 class WeatherModel {
   Future getLocationForNamedCity(String cityName) async {

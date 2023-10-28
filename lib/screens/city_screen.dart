@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:clima/utilities/constants.dart';
 
+// Class for City Screen, displays TextField for manual city selection
 class CityScreen extends StatefulWidget {
   const CityScreen({super.key});
 
@@ -39,6 +40,7 @@ class _CityScreenState extends State<CityScreen> {
               ),
               Container(
                 padding: const EdgeInsets.all(20.0),
+                // TextField for manual city selection
                 child: TextField(
                   style: const TextStyle(
                     color: Colors.black,

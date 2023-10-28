@@ -2,6 +2,7 @@ import 'location.dart';
 import 'networking.dart';
 import 'package:clima/utilities/constants.dart';
 
+// Weather Model class fetches the data from API and returns the weather data
 class WeatherModel {
   Future getLocationForNamedCity(String cityName) async {
     var url = '$weatherAPILink?q=$cityName&appid=$apiKey&units=metric';

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:clima/utilities/constants.dart';
 import 'package:clima/services/weather.dart';
 
+// Class for main screen (Location Screen). It displays current weather for the live location and also for selected city.
 class LocationScreen extends StatefulWidget {
   LocationScreen({this.locationWeather});
 
@@ -30,6 +31,7 @@ class _LocationScreenState extends State<LocationScreen> {
   }
 
   void updateUI(dynamic weatherData) {
+    // Handled null expection from weather api.
     setState(() {
       if (weatherData == null) {
         cityName = 'here';
@@ -39,6 +41,7 @@ class _LocationScreenState extends State<LocationScreen> {
         return;
       }
 
+      // Fetching values from weather data
       cityName = weatherData['name'];
       condition = weatherData['weather'][0]['id'];
       weatherIcon = weatherModal.getWeatherIcon(condition);

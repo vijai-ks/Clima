@@ -5,6 +5,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'location_screen.dart';
 import 'package:clima/services/weather.dart';
 
+// Class for Loading Screen
 class LoadingScreen extends StatefulWidget {
   const LoadingScreen({super.key});
 
@@ -19,6 +20,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
     super.initState();
   }
 
+  // This function gets the location and send back to the loading screen
   void getLocationData() async {
     var weatherData = await WeatherModel().getLocationScreen();
 
@@ -38,6 +40,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
+        // SpinKit for loading animation
         child: SpinKitChasingDots(
           color: Colors.white,
           size: 150.0,

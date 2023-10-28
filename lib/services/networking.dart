@@ -1,6 +1,7 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+// This NetworkHelper class fetches the weather data from API link and returns the data..
 class NetworkHelper {
   late final String url;
 
